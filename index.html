@@ -533,6 +533,83 @@ code,kbd{font-family:'JetBrains Mono',monospace}
   .risk-matrix{grid-template-columns:repeat(3,1fr)}
   .founder-card{flex-direction:column}
 }
+
+/* ══ SCREENING SECTION ══ */
+.screen-progress{display:flex;align-items:center;gap:0;margin-bottom:32px}
+.screen-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}
+.screen-step:not(:last-child)::after{content:'';position:absolute;top:16px;left:60%;width:80%;height:2px;background:var(--border);z-index:0}
+.screen-step.done:not(:last-child)::after{background:var(--lime)}
+.screen-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:600;z-index:1;border:2px solid var(--border);background:var(--bg-card);color:var(--text-muted);transition:all .3s}
+.screen-step.done .screen-dot{background:var(--lime-dim);border-color:var(--lime);color:var(--lime)}
+.screen-step.active .screen-dot{background:rgba(132,204,22,0.15);border-color:var(--lime);color:var(--lime);box-shadow:0 0 12px rgba(132,204,22,0.3)}
+.screen-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--text-muted);margin-top:7px;text-align:center;letter-spacing:0.06em;text-transform:uppercase}
+.screen-step.active .screen-label{color:var(--lime)}
+.screening-panel{display:none;animation:rise .35s cubic-bezier(.23,1,.32,1)}
+.screening-panel.on{display:block}
+.intake-card{background:var(--bg-card-alt);border:1.5px solid var(--lime-border);border-radius:var(--r-lg);padding:24px;margin-bottom:14px;box-shadow:0 0 24px rgba(132,204,22,0.06)}
+.intake-card-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.intake-card-icon{width:38px;height:38px;border-radius:9px;background:var(--lime-dim);border:1px solid var(--lime-border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.intake-card-title{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--text-primary)}
+.intake-card-sub{font-family:'JetBrains Mono',monospace;font-size:0.64rem;color:var(--text-muted);margin-top:2px}
+.symptom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-top:10px}
+.symptom-chip{background:var(--bg-card);border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text-secondary)}
+.symptom-chip:hover,.symptom-chip.sel{background:var(--lime-dim);border-color:var(--lime);color:var(--lime)}
+.symptom-chip .chip-dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .2s}
+.symptom-chip.sel .chip-dot{background:var(--lime)}
+.severity-bar{display:flex;gap:6px;margin-top:10px}
+.sev-btn{flex:1;padding:9px 4px;border:1.5px solid var(--border);border-radius:8px;background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;transition:all .2s;text-align:center}
+.sev-btn:hover{border-color:var(--lime-border);color:var(--lime)}
+.sev-btn.sel-mild{background:rgba(34,197,94,0.1);border-color:var(--success-border);color:var(--success)}
+.sev-btn.sel-mod{background:rgba(245,158,11,0.1);border-color:var(--warning-border);color:var(--warning)}
+.sev-btn.sel-sev{background:rgba(239,68,68,0.1);border-color:var(--danger-border);color:var(--danger)}
+
+.reporter-type-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.reporter-type-btn{background:var(--bg-card);border:1.5px solid var(--border);border-radius:10px;padding:14px 12px;cursor:pointer;text-align:center;transition:all .2s}
+.reporter-type-btn:hover,.reporter-type-btn.sel{background:var(--lime-dim);border-color:var(--lime)}
+.reporter-type-btn .rt-icon{font-size:1.5rem;margin-bottom:6px}
+.reporter-type-btn .rt-label{font-size:0.78rem;font-weight:600;color:var(--text-primary)}
+.reporter-type-btn .rt-sub{font-size:0.68rem;color:var(--text-muted);margin-top:2px}
+
+.submission-success{text-align:center;padding:40px 24px;display:none}
+.submission-success.on{display:block;animation:rise .5s cubic-bezier(.23,1,.32,1)}
+.success-ring{width:72px;height:72px;border-radius:50%;background:var(--lime-dim);border:2px solid var(--lime);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:var(--lime-glow)}
+.case-id-badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg-card-alt);border:1.5px solid var(--lime-border);border-radius:10px;padding:10px 20px;font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--lime);letter-spacing:0.1em;margin:16px 0}
+
+/* ══ CASE DETAIL MODAL TABS ══ */
+.modal-tabs{display:flex;gap:0;background:var(--bg-card-alt);border-radius:8px;padding:3px;margin-bottom:18px}
+.modal-tab{flex:1;padding:7px 10px;border:none;background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;border-radius:6px;cursor:pointer;transition:all .2s;text-align:center}
+.modal-tab.on{background:var(--lime-dim);border:1px solid var(--lime-border);color:var(--lime);font-weight:600}
+.modal-tab-panel{display:none}
+.modal-tab-panel.on{display:block;animation:rise .25s ease}
+
+/* ══ AI CASE NARRATIVE ══ */
+.ai-narrative-box{background:var(--bg-input);border:1.5px solid var(--lime-border);border-radius:10px;padding:18px;font-size:0.83rem;line-height:1.75;color:var(--text-secondary);position:relative;overflow:hidden}
+.ai-narrative-box::before{content:'AI GENERATED';position:absolute;top:10px;right:12px;font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:rgba(132,204,22,0.5);letter-spacing:0.12em}
+.narrative-section{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.narrative-section:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.narrative-label{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--lime);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;display:block}
+
+/* ══ REAL-TIME COMMUNICATION ══ */
+.comm-panel{display:flex;flex-direction:column;height:320px}
+.comm-thread{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0 12px}
+.comm-msg{display:flex;gap:9px;animation:rise .3s ease}
+.comm-msg.out{flex-direction:row-reverse}
+.comm-avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700}
+.comm-msg.in .comm-avatar{background:var(--navy-vivid);border:1px solid var(--border);color:rgba(255,255,255,0.6)}
+.comm-msg.out .comm-avatar{background:linear-gradient(135deg,var(--lime),#4D7C0F);color:#0F172A}
+.comm-bubble{max-width:82%;padding:9px 13px;border-radius:11px;font-size:0.82rem;line-height:1.55}
+.comm-msg.in .comm-bubble{background:var(--bg-card-alt);border:1px solid var(--border);color:var(--text-secondary)}
+.comm-msg.out .comm-bubble{background:var(--lime-dim);border:1px solid var(--lime-border);color:var(--text-primary)}
+.comm-time{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--text-faint);margin-top:3px}
+.comm-sender{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-muted);margin-bottom:3px}
+.comm-input-row{display:flex;gap:8px;padding-top:10px;border-top:1px solid var(--border);margin-top:4px}
+.comm-input{flex:1;background:var(--bg-input);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-primary);font-family:'DM Sans',sans-serif;font-size:0.83rem;outline:none;transition:border-color .2s;resize:none;height:38px}
+.comm-input:focus{border-color:var(--lime)}
+.comm-send{background:linear-gradient(135deg,var(--lime),#4D7C0F);border:none;border-radius:8px;padding:0 14px;color:#0F172A;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:0.78rem;white-space:nowrap;transition:all .2s}
+.comm-send:hover{transform:translateY(-1px);box-shadow:var(--shadow-lime)}
+.comm-status-bar{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);margin-bottom:10px}
+.comm-status-dot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 6px var(--success);animation:blink 2.5s ease-in-out infinite}
+.comm-status-text{font-family:'JetBrains Mono',monospace;font-size:0.63rem;color:var(--text-muted)}
 </style>
 </head>
 <body>
@@ -549,6 +626,7 @@ code,kbd{font-family:'JetBrains Mono',monospace}
     <button class="npill on" onclick="showSec('dashboard',this)">Dashboard</button>
     <button class="npill" onclick="showSec('signals',this)">Signals</button>
     <button class="npill" onclick="showSec('cases',this)">Case Mgmt</button>
+    <button class="npill" onclick="showSec('screening',this)">Screening</button>
     <button class="npill" onclick="showSec('reports',this)">Reports</button>
     <button class="npill" onclick="showSec('global',this)">Global</button>
     <button class="npill ai-pill" onclick="showSec('ai',this)">AI Advisor</button>
@@ -573,6 +651,10 @@ code,kbd{font-family:'JetBrains Mono',monospace}
   <button class="mnav-btn" onclick="showSec('cases',this)">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg>
     Cases
+  </button>
+  <button class="mnav-btn" onclick="showSec('screening',this)">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    Screen
   </button>
   <button class="mnav-btn" onclick="showSec('reports',this)">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
@@ -1528,6 +1610,241 @@ code,kbd{font-family:'JetBrains Mono',monospace}
   </div>
 </section>
 
+<!-- ═══════════════════════════════════
+     PATIENT SCREENING / CASE REPORTING
+═══════════════════════════════════ -->
+<section class="sec" id="sec-screening">
+  <div class="hero" style="padding-bottom:24px">
+    <div class="hero-label">Patient &amp; Reporter Intake · Direct Report Channel</div>
+    <h1>Patient <em>Screening</em> &amp; Case Reporting</h1>
+    <p class="hero-sub">Structured adverse event intake directly from patients, healthcare professionals and caregivers. Every report is automatically triaged, MedDRA-coded and entered into the ICSR lifecycle.</p>
+  </div>
+
+  <div class="metrics-row" style="margin-bottom:20px">
+    <div class="metric"><div class="metric-num">347</div><div class="metric-label">Reports This Month</div></div>
+    <div class="metric"><div class="metric-num" style="font-size:1.4rem;color:var(--warning);-webkit-text-fill-color:var(--warning)">24</div><div class="metric-label">Awaiting Triage</div></div>
+    <div class="metric"><div class="metric-num">94%</div><div class="metric-label">Auto-Coded</div></div>
+    <div class="metric"><div class="metric-num">&lt;2h</div><div class="metric-label">Avg. Triage Time</div></div>
+  </div>
+
+  <!-- Progress Steps -->
+  <div class="screen-progress">
+    <div class="screen-step done" id="sp1">
+      <div class="screen-dot">✓</div>
+      <div class="screen-label">Reporter Type</div>
+    </div>
+    <div class="screen-step active" id="sp2">
+      <div class="screen-dot">2</div>
+      <div class="screen-label">Patient Info</div>
+    </div>
+    <div class="screen-step" id="sp3">
+      <div class="screen-dot">3</div>
+      <div class="screen-label">Adverse Event</div>
+    </div>
+    <div class="screen-step" id="sp4">
+      <div class="screen-dot">4</div>
+      <div class="screen-label">Drug Details</div>
+    </div>
+    <div class="screen-step" id="sp5">
+      <div class="screen-dot">5</div>
+      <div class="screen-label">Review &amp; Submit</div>
+    </div>
+  </div>
+
+  <!-- STEP 1: Reporter Type -->
+  <div class="screening-panel on" id="screen-step-1">
+    <div class="intake-card">
+      <div class="intake-card-header">
+        <div class="intake-card-icon"><svg fill="none" stroke="var(--lime)" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div><div class="intake-card-title">Who is submitting this report?</div><div class="intake-card-sub">STEP 1 OF 5 · REPORTER IDENTIFICATION</div></div>
+      </div>
+      <div class="reporter-type-grid">
+        <div class="reporter-type-btn sel" onclick="selectReporter(this)">
+          <div class="rt-icon">🩺</div>
+          <div class="rt-label">Healthcare Professional</div>
+          <div class="rt-sub">Doctor, nurse, pharmacist</div>
+        </div>
+        <div class="reporter-type-btn" onclick="selectReporter(this)">
+          <div class="rt-icon">🧑</div>
+          <div class="rt-label">Patient</div>
+          <div class="rt-sub">Reporting own experience</div>
+        </div>
+        <div class="reporter-type-btn" onclick="selectReporter(this)">
+          <div class="rt-icon">👨‍👩‍👧</div>
+          <div class="rt-label">Caregiver / Family</div>
+          <div class="rt-sub">Reporting for a patient</div>
+        </div>
+        <div class="reporter-type-btn" onclick="selectReporter(this)">
+          <div class="rt-icon">🏢</div>
+          <div class="rt-label">Company / MAH</div>
+          <div class="rt-sub">Solicited or post-market</div>
+        </div>
+      </div>
+      <div style="margin-top:20px">
+        <div class="form-grid">
+          <div class="form-row"><label class="form-label">Reporter Name</label><input class="form-input" placeholder="Full name"/></div>
+          <div class="form-row"><label class="form-label">Country</label><select class="form-select"><option selected>United Kingdom</option><option>United States</option><option>Germany</option><option>France</option><option>Japan</option><option>Australia</option><option>Other</option></select></div>
+          <div class="form-row"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="For follow-up communication"/></div>
+          <div class="form-row"><label class="form-label">Phone (Optional)</label><input class="form-input" type="tel" placeholder="+44 xxx xxx xxxx"/></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:16px">
+        <button class="btn-primary" onclick="screenNext(2)">
+          Next: Patient Information
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Patient Info -->
+  <div class="screening-panel" id="screen-step-2">
+    <div class="intake-card">
+      <div class="intake-card-header">
+        <div class="intake-card-icon"><svg fill="none" stroke="var(--lime)" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div><div class="intake-card-title">Patient Demographics</div><div class="intake-card-sub">STEP 2 OF 5 · PATIENT INFORMATION</div></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-row"><label class="form-label">Patient Initials</label><input class="form-input" placeholder="e.g. J.S."/></div>
+        <div class="form-row"><label class="form-label">Date of Birth / Age</label><input class="form-input" placeholder="Age or DOB"/></div>
+        <div class="form-row"><label class="form-label">Sex at Birth</label><select class="form-select"><option>Male</option><option selected>Female</option><option>Unknown</option><option>Not applicable</option></select></div>
+        <div class="form-row"><label class="form-label">Weight (kg)</label><input class="form-input" type="number" placeholder="e.g. 68"/></div>
+        <div class="form-row"><label class="form-label">Height (cm)</label><input class="form-input" type="number" placeholder="e.g. 165"/></div>
+        <div class="form-row"><label class="form-label">Ethnicity (Optional)</label><select class="form-select"><option selected>Prefer not to say</option><option>White British</option><option>Asian / British Asian</option><option>Black / British Black</option><option>Mixed</option><option>Other</option></select></div>
+      </div>
+      <div class="form-row" style="margin-top:10px"><label class="form-label">Relevant Medical History</label><textarea class="form-input" rows="3" placeholder="Pre-existing conditions, allergies, prior adverse events…"></textarea></div>
+      <div style="display:flex;justify-content:space-between;margin-top:16px">
+        <button class="btn-ghost" onclick="screenNext(1)">← Back</button>
+        <button class="btn-primary" onclick="screenNext(3)">Next: Adverse Event <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Adverse Event -->
+  <div class="screening-panel" id="screen-step-3">
+    <div class="intake-card">
+      <div class="intake-card-header">
+        <div class="intake-card-icon"><svg fill="none" stroke="var(--lime)" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg></div>
+        <div><div class="intake-card-title">Adverse Event Details</div><div class="intake-card-sub">STEP 3 OF 5 · WHAT HAPPENED</div></div>
+      </div>
+      <div class="form-row"><label class="form-label">Describe the Reaction</label><textarea class="form-input" rows="3" placeholder="Describe what happened in the patient's own words…"></textarea></div>
+      <div class="form-row"><label class="form-label">Select Symptoms (tick all that apply)</label>
+        <div class="symptom-grid">
+          <div class="symptom-chip sel" onclick="toggleChip(this)"><span class="chip-dot"></span>Nausea</div>
+          <div class="symptom-chip sel" onclick="toggleChip(this)"><span class="chip-dot"></span>Jaundice</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Fatigue</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Abdominal Pain</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Rash / Urticaria</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Dizziness</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Dyspnoea</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Palpitations</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Headache</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Swelling</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Fever &gt;38°C</div>
+          <div class="symptom-chip" onclick="toggleChip(this)"><span class="chip-dot"></span>Other</div>
+        </div>
+      </div>
+      <div class="form-row" style="margin-top:14px"><label class="form-label">Severity</label>
+        <div class="severity-bar">
+          <button class="sev-btn sel-mild" onclick="selectSev(this,'sel-mild')">Mild</button>
+          <button class="sev-btn" onclick="selectSev(this,'sel-mod')">Moderate</button>
+          <button class="sev-btn" onclick="selectSev(this,'sel-sev')">Severe</button>
+          <button class="sev-btn" onclick="selectSev(this,'sel-sev')">Life-Threatening</button>
+        </div>
+      </div>
+      <div class="form-grid" style="margin-top:14px">
+        <div class="form-row"><label class="form-label">Onset Date</label><input class="form-input" type="date"/></div>
+        <div class="form-row"><label class="form-label">Outcome</label><select class="form-select"><option>Recovering</option><option>Recovered</option><option selected>Ongoing</option><option>Hospitalised</option><option>Fatal</option><option>Unknown</option></select></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:16px">
+        <button class="btn-ghost" onclick="screenNext(2)">← Back</button>
+        <button class="btn-primary" onclick="screenNext(4)">Next: Drug Details <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: Drug Details -->
+  <div class="screening-panel" id="screen-step-4">
+    <div class="intake-card">
+      <div class="intake-card-header">
+        <div class="intake-card-icon"><svg fill="none" stroke="var(--lime)" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M10.5 20H4a2 2 0 01-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 011.66.9l.82 1.2a2 2 0 001.66.9H20a2 2 0 012 2v2.5"/><path d="M14 19h6m-3-3v6"/></svg></div>
+        <div><div class="intake-card-title">Suspected Drug(s)</div><div class="intake-card-sub">STEP 4 OF 5 · MEDICATION INFORMATION</div></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-row"><label class="form-label">Product Name</label><select class="form-select"><option selected>NEXALIN 50mg</option><option>CARDAVEX 10mg</option><option>VIRALIX 200mg</option><option>Other (specify below)</option></select></div>
+        <div class="form-row"><label class="form-label">Batch / Lot Number</label><input class="form-input" placeholder="e.g. NX2401"/></div>
+        <div class="form-row"><label class="form-label">Daily Dose</label><input class="form-input" placeholder="e.g. 50mg once daily"/></div>
+        <div class="form-row"><label class="form-label">Route of Administration</label><select class="form-select"><option selected>Oral</option><option>Intravenous</option><option>Subcutaneous</option><option>Topical</option><option>Inhaled</option></select></div>
+        <div class="form-row"><label class="form-label">Date Started</label><input class="form-input" type="date"/></div>
+        <div class="form-row"><label class="form-label">Indication (reason for use)</label><input class="form-input" placeholder="e.g. Hepatitis C treatment"/></div>
+      </div>
+      <div class="form-row" style="margin-top:10px"><label class="form-label">Concomitant Medications</label><textarea class="form-input" rows="2" placeholder="List other drugs the patient is taking (name, dose, frequency)…"></textarea></div>
+      <div style="background:var(--lime-dim);border:1px solid var(--lime-border);border-radius:8px;padding:12px 14px;margin-top:14px;font-size:0.8rem;color:var(--lime)">
+        <strong>AI Note:</strong> Based on selected drug (NEXALIN 50mg) and symptoms (nausea, jaundice), the AI has pre-classified this as a potential <strong>Drug-Induced Liver Injury (DILI)</strong> event — MedDRA PT: Hepatic failure. Please verify before submission.
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:16px">
+        <button class="btn-ghost" onclick="screenNext(3)">← Back</button>
+        <button class="btn-primary" onclick="screenNext(5)">Review &amp; Submit <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5: Review & Submit -->
+  <div class="screening-panel" id="screen-step-5">
+    <div class="intake-card">
+      <div class="intake-card-header">
+        <div class="intake-card-icon"><svg fill="none" stroke="var(--lime)" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><path d="M9 12l2 2 4-4"/><path d="M12 2L3 7v5c0 5 3.8 9.7 9 11 5.2-1.3 9-6 9-11V7L12 2z"/></svg></div>
+        <div><div class="intake-card-title">Review &amp; Submit</div><div class="intake-card-sub">STEP 5 OF 5 · FINAL CHECK</div></div>
+      </div>
+      <div style="background:var(--bg-input);border:1.5px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div class="info-row"><span class="info-key">Reporter</span><span class="info-val">Healthcare Professional · UK</span></div>
+          <div class="info-row"><span class="info-key">Patient</span><span class="info-val">Female, ~52 yrs · J.S.</span></div>
+          <div class="info-row"><span class="info-key">Product</span><span class="info-val">NEXALIN 50mg (Batch NX2401)</span></div>
+          <div class="info-row"><span class="info-key">Event (AI-coded)</span><span class="info-val" style="color:var(--lime)">Hepatic failure (MedDRA PT)</span></div>
+          <div class="info-row"><span class="info-key">Severity</span><span class="info-val" style="color:var(--warning)">Serious · Life-threatening</span></div>
+          <div class="info-row"><span class="info-key">Outcome</span><span class="info-val" style="color:var(--danger)">Hospitalised · Ongoing</span></div>
+          <div class="info-row"><span class="info-key">Onset</span><span class="info-val">2025-04-05</span></div>
+          <div class="info-row"><span class="info-key">AI Classification</span><span class="info-val" style="color:var(--danger)">Serious · Unexpected → 7-Day</span></div>
+        </div>
+      </div>
+      <div style="background:rgba(239,68,68,0.06);border:1px solid var(--danger-border);border-radius:8px;padding:12px 14px;margin-bottom:16px;font-size:0.8rem;color:var(--danger)">
+        <strong>⚠ AI Triage Alert:</strong> This event qualifies as a <strong>Serious Unexpected Adverse Reaction</strong>. A <strong>7-day expedited report</strong> will be automatically triggered to FDA FAERS and EMA EudraVigilance upon submission.
+      </div>
+      <div class="form-row"><label class="form-label">Reporter Signature / Confirmation</label><input class="form-input" placeholder="Type your full name to confirm this report"/></div>
+      <div style="display:flex;justify-content:space-between;margin-top:16px;gap:10px">
+        <button class="btn-ghost" onclick="screenNext(4)">← Back</button>
+        <button class="btn-primary" style="flex:1;justify-content:center" onclick="submitScreening()">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="15" height="15"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+          Submit Adverse Event Report
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success State -->
+  <div class="submission-success" id="screen-success">
+    <div class="success-ring">
+      <svg fill="none" stroke="var(--lime)" stroke-width="3" viewBox="0 0 24 24" width="32" height="32"><polyline points="20,6 9,17 4,12"/></svg>
+    </div>
+    <h2 style="margin-bottom:10px">Report Submitted Successfully</h2>
+    <p style="color:var(--text-muted);max-width:400px;margin:0 auto 16px">Your adverse event report has been received, AI-triaged and entered into the ICSR processing pipeline.</p>
+    <div class="case-id-badge">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg>
+      Case ID: VC-2025-4889
+    </div>
+    <div class="card-grid-3" style="margin:20px auto;max-width:600px;text-align:left">
+      <div class="card"><span class="stag r" style="display:inline-block;margin-bottom:8px">7-Day Expedited</span><p style="font-size:0.78rem">Serious unexpected event — regulatory submission auto-triggered to FDA &amp; EMA.</p></div>
+      <div class="card"><span class="stag w" style="display:inline-block;margin-bottom:8px">MedDRA Coded</span><p style="font-size:0.78rem">AI coded as Hepatic failure (PT) under SOC Hepatobiliary Disorders.</p></div>
+      <div class="card"><span class="stag l" style="display:inline-block;margin-bottom:8px">Follow-up Queued</span><p style="font-size:0.78rem">Reporter will be contacted for additional information within 2 business days.</p></div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+      <button class="btn-primary" onclick="showSec('cases',document.querySelectorAll('.npill')[2])">View in Case Management</button>
+      <button class="btn-ghost" onclick="resetScreening()">Submit Another Report</button>
+    </div>
+  </div>
+</section>
+
 </div><!-- /app -->
 
 <!-- ═══════════════════════════════════
@@ -1600,30 +1917,149 @@ code,kbd{font-family:'JetBrains Mono',monospace}
   </div>
 </div>
 
-<!-- Case Detail Modal -->
+<!-- Case Detail Modal — full tabbed view -->
 <div class="modal-overlay" id="case-modal" onclick="closeModal()">
-  <div class="modal" style="max-width:560px" onclick="event.stopPropagation()">
+  <div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
     <div class="modal-head">
-      <h3>Case VC-2024-4821</h3>
+      <div>
+        <h3>Case VC-2024-4821</h3>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--text-muted);margin-top:3px">Acute Hepatic Failure · NEXALIN 50mg · 7-Day Report</div>
+      </div>
       <button class="modal-close" onclick="closeModal()"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <div style="display:flex;gap:8px;margin-bottom:16px">
+    <div style="display:flex;gap:6px;margin-bottom:14px">
       <span class="badge r">7-Day</span><span class="badge r">OVERDUE</span><span class="badge w">Serious · Unexpected</span>
     </div>
-    <div class="pbar-wrap" style="margin-bottom:16px">
-      <div class="info-row"><span class="info-key">Product</span><span class="info-val">NEXALIN 50mg (Batch: NX2401)</span></div>
-      <div class="info-row"><span class="info-key">Adverse Event</span><span class="info-val">Acute Hepatic Failure</span></div>
-      <div class="info-row"><span class="info-key">Patient</span><span class="info-val">Female, 52 years</span></div>
-      <div class="info-row"><span class="info-key">Onset Date</span><span class="info-val">2024-04-05</span></div>
-      <div class="info-row"><span class="info-key">Outcome</span><span class="info-val" style="color:var(--danger)">Hospitalised  ongoing</span></div>
-      <div class="info-row"><span class="info-key">Causality</span><span class="info-val" style="color:var(--warning)">Possible (WHO-UMC)</span></div>
-      <div class="info-row"><span class="info-key">Reporter</span><span class="info-val">Hepatologist, UK  NHS Hospital</span></div>
-      <div class="info-row"><span class="info-key">FDA Deadline</span><span class="info-val" style="color:var(--danger)">OVERDUE  File immediately</span></div>
+
+    <!-- Tabs -->
+    <div class="modal-tabs">
+      <button class="modal-tab on" onclick="caseTab(this,'ct-info')">Case Details</button>
+      <button class="modal-tab" onclick="caseTab(this,'ct-report')">AI Report</button>
+      <button class="modal-tab" onclick="caseTab(this,'ct-comm')">
+        <span style="display:flex;align-items:center;gap:5px;justify-content:center">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--success);display:inline-block;box-shadow:0 0 5px var(--success)"></span>Communication
+        </span>
+      </button>
     </div>
-    <div style="display:flex;gap:8px">
-      <button class="btn-run" style="flex:1" onclick="closeModal();showToast('E2B(R3) file submitted to FDA FAERS','s')">Submit to FDA FAERS</button>
-      <button class="btn-sm" onclick="setAiPrompt('Help me draft the narrative for Case VC-2024-4821: hepatic failure in 52yo female on NEXALIN 50mg')">AI Narrative</button>
+
+    <!-- TAB 1: Case Details -->
+    <div class="modal-tab-panel on" id="ct-info">
+      <div class="pbar-wrap" style="margin-bottom:16px">
+        <div class="info-row"><span class="info-key">Product</span><span class="info-val">NEXALIN 50mg (Batch: NX2401)</span></div>
+        <div class="info-row"><span class="info-key">Adverse Event</span><span class="info-val">Acute Hepatic Failure</span></div>
+        <div class="info-row"><span class="info-key">MedDRA PT</span><span class="info-val" style="color:var(--lime)">Hepatic failure (SOC: Hepatobiliary)</span></div>
+        <div class="info-row"><span class="info-key">Patient</span><span class="info-val">Female, 52 years · J.S.</span></div>
+        <div class="info-row"><span class="info-key">Onset Date</span><span class="info-val">2024-04-05</span></div>
+        <div class="info-row"><span class="info-key">Outcome</span><span class="info-val" style="color:var(--danger)">Hospitalised — ongoing</span></div>
+        <div class="info-row"><span class="info-key">Causality</span><span class="info-val" style="color:var(--warning)">Possible → Probable (WHO-UMC)</span></div>
+        <div class="info-row"><span class="info-key">Reporter</span><span class="info-val">Hepatologist · NHS Hospital, UK</span></div>
+        <div class="info-row"><span class="info-key">FDA Deadline</span><span class="info-val" style="color:var(--danger)">OVERDUE — File immediately</span></div>
+        <div class="info-row"><span class="info-key">Duplicate Check</span><span class="info-val" style="color:var(--success)">No duplicate detected</span></div>
+      </div>
+      <p style="font-size:0.77rem;color:var(--text-muted);margin-bottom:10px">Each case is already structured and ready for review. This significantly reduces manual data entry and improves both speed and accuracy.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn-run" style="flex:1" onclick="closeModal();showToast('E2B(R3) file submitted to FDA FAERS','s')">Submit to FDA FAERS</button>
+        <button class="btn-sm" onclick="caseTab(document.querySelectorAll('#case-modal .modal-tab')[1],'ct-report')">View AI Report</button>
+        <button class="btn-sm" onclick="setAiPrompt('Help me draft the narrative for Case VC-2024-4821: hepatic failure in 52yo female on NEXALIN 50mg')">Ask AI</button>
+      </div>
     </div>
+
+    <!-- TAB 2: AI Generated Report -->
+    <div class="modal-tab-panel" id="ct-report">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--lime),#4D7C0F);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg fill="none" stroke="#0F172A" stroke-width="2.5" viewBox="0 0 24 24" width="12" height="12"><path d="M12 2L3 7v5c0 5 3.8 9.7 9 11 5.2-1.3 9-6 9-11V7L12 2z"/></svg></div>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-primary)">AI-Generated ICSR Narrative</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-muted)">Case VC-2024-4821 · Powered by VigiConnect AI · Claude</div>
+        </div>
+        <span class="badge l" style="margin-left:auto">Auto-drafted</span>
+      </div>
+      <div class="ai-narrative-box">
+        <div class="narrative-section">
+          <span class="narrative-label">Patient Information</span>
+          A 52-year-old female patient (initials J.S.) with no prior history of hepatic disease initiated treatment with <strong style="color:var(--text-primary)">NEXALIN 50mg</strong> (Batch NX2401) for the management of Hepatitis C infection on 21 March 2024. Concomitant medications included paracetamol 500mg PRN.
+        </div>
+        <div class="narrative-section">
+          <span class="narrative-label">Adverse Event Description</span>
+          Approximately <strong style="color:var(--text-primary)">14 days after initiation</strong> (onset: 05 April 2024), the patient presented to NHS emergency services with elevated hepatic enzymes (ALT 1,240 U/L, AST 980 U/L, bilirubin 4.2 mg/dL), jaundice, and generalised fatigue consistent with <strong style="color:var(--text-primary)">acute hepatic failure (MedDRA PT: Hepatic failure, SOC: Hepatobiliary Disorders)</strong>.
+        </div>
+        <div class="narrative-section">
+          <span class="narrative-label">Causality Assessment</span>
+          Causality assessed as <strong style="color:var(--warning)">Probable (WHO-UMC criteria)</strong>: plausible time sequence (14 days); NEXALIN discontinued on 05 April — hepatic enzymes began improving at Day +7 (positive de-challenge); no alternative aetiology identified (viral hepatitis excluded; no hepatotoxic co-medications).
+        </div>
+        <div class="narrative-section">
+          <span class="narrative-label">Current Status &amp; Actions</span>
+          Patient remains hospitalised. NEXALIN permanently discontinued. <strong style="color:var(--danger)">7-Day Expedited Report to FDA FAERS is OVERDUE.</strong> Reporting obligation also triggered under GVP Module VI to EudraVigilance. Signal identified: hepatotoxicity PRR 4.2 — label update process initiated.
+        </div>
+        <div class="narrative-section">
+          <span class="narrative-label">MedDRA Coding Summary</span>
+          SOC: Hepatobiliary Disorders · HLGT: Hepatic failure and associated disorders · HLT: Hepatic failure · <strong style="color:var(--lime)">PT: Hepatic failure [10019663]</strong>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn-run" style="flex:1" onclick="showToast('ICSR narrative copied to case file','s');closeModal()">Accept &amp; Save Narrative</button>
+        <button class="btn-sm" onclick="setAiPrompt('Revise the narrative for Case VC-2024-4821 to strengthen causality argument and add CIOMS I format')">Refine with AI</button>
+      </div>
+    </div>
+
+    <!-- TAB 3: Real-Time Communication -->
+    <div class="modal-tab-panel" id="ct-comm">
+      <div class="comm-status-bar">
+        <div class="comm-status-dot"></div>
+        <span class="comm-status-text">REPORTER CONNECTED · Dr. M. Patel · NHS Hospital, UK · Last seen 4 min ago</span>
+      </div>
+      <p style="font-size:0.77rem;color:var(--text-muted);margin-bottom:10px">One of the most powerful features — real-time communication. Instead of reports disappearing into static systems, you can follow up directly with the reporter for faster clarification and stronger case quality.</p>
+      <div class="comm-panel">
+        <div class="comm-thread" id="commThread">
+          <!-- System message -->
+          <div style="text-align:center;margin:4px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-faint);background:var(--bg-card-alt);border:1px solid var(--border);border-radius:20px;padding:3px 10px">Case VC-2024-4821 opened · 05 Apr 2024</span></div>
+          <!-- Reporter message in -->
+          <div class="comm-msg in">
+            <div class="comm-avatar" title="Reporter">Dr</div>
+            <div>
+              <div class="comm-sender">Dr. M. Patel · Hepatologist · NHS</div>
+              <div class="comm-bubble">Patient admitted with acute hepatic failure. She had been on NEXALIN for 14 days before symptoms appeared. ALT was 1,240 on admission. No other obvious cause found.</div>
+              <div class="comm-time">05 Apr 2024 · 09:14</div>
+            </div>
+          </div>
+          <!-- PV team response out -->
+          <div class="comm-msg out">
+            <div>
+              <div class="comm-sender" style="text-align:right">PV Team · VigiConnect</div>
+              <div class="comm-bubble">Thank you Dr. Patel. Could you confirm whether NEXALIN was discontinued after onset, and whether enzyme levels are improving? We also need de-challenge/re-challenge status for causality assessment.</div>
+              <div class="comm-time" style="text-align:right">05 Apr 2024 · 11:32</div>
+            </div>
+            <div class="comm-avatar" title="PV Team">PV</div>
+          </div>
+          <!-- Reporter follow-up in -->
+          <div class="comm-msg in">
+            <div class="comm-avatar" title="Reporter">Dr</div>
+            <div>
+              <div class="comm-sender">Dr. M. Patel · Hepatologist · NHS</div>
+              <div class="comm-bubble">Yes, NEXALIN was stopped on the same day. ALT started coming down from Day 7. We will not rechallenge. Patient remains in hospital but stable. Will send lab results shortly.</div>
+              <div class="comm-time">06 Apr 2024 · 08:55</div>
+            </div>
+          </div>
+          <!-- AI automated follow-up out -->
+          <div class="comm-msg out">
+            <div>
+              <div class="comm-sender" style="text-align:right">VigiConnect AI · Auto follow-up</div>
+              <div class="comm-bubble">📋 Auto-request: Please provide full laboratory values (ALT, AST, bilirubin, INR) at admission and most recent. Also confirm: any viral hepatitis screening performed? Any other hepatotoxic co-medications?</div>
+              <div class="comm-time" style="text-align:right">06 Apr 2024 · 09:00 · AI</div>
+            </div>
+            <div class="comm-avatar" style="background:linear-gradient(135deg,var(--lime),#4D7C0F);color:#0F172A" title="AI">AI</div>
+          </div>
+        </div>
+        <div class="comm-input-row">
+          <textarea class="comm-input" id="commInput" placeholder="Message Dr. Patel · Press Enter to send…" onkeydown="sendCommMsg(event)"></textarea>
+          <button class="comm-send" onclick="sendCommMsgBtn()">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="13" height="13"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1772,11 +2208,139 @@ function filterSignals(q) {
 }
 
 // ══════════════════════════════
-//  SUBMIT CASE
+//  CASE DETAIL TABS
 // ══════════════════════════════
-function submitCase() {
-  closeModal();
-  showToast('ICSR case created  VC-2024-4888','s');
+function caseTab(btn, panelId) {
+  document.querySelectorAll('#case-modal .modal-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('#case-modal .modal-tab-panel').forEach(p => p.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  const panel = document.getElementById(panelId);
+  if(panel) panel.classList.add('on');
+}
+
+// ══════════════════════════════
+//  PATIENT SCREENING STEPS
+// ══════════════════════════════
+let currentScreenStep = 1;
+const totalScreenSteps = 5;
+const stepDotIds = ['sp1','sp2','sp3','sp4','sp5'];
+
+function screenNext(step) {
+  // Hide all panels
+  for(let i=1;i<=totalScreenSteps;i++){
+    const p = document.getElementById('screen-step-'+i);
+    if(p) p.classList.remove('on');
+  }
+  // Show target
+  const target = document.getElementById('screen-step-'+step);
+  if(target) target.classList.add('on');
+  currentScreenStep = step;
+  // Update progress dots
+  stepDotIds.forEach((id, idx) => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.classList.remove('done','active');
+    const stepNum = idx + 1;
+    if(stepNum < step) { el.classList.add('done'); el.querySelector('.screen-dot').textContent = '✓'; }
+    else if(stepNum === step) { el.classList.add('active'); el.querySelector('.screen-dot').textContent = stepNum; }
+    else { el.querySelector('.screen-dot').textContent = stepNum; }
+  });
+  window.scrollTo(0,0);
+}
+
+function selectReporter(el) {
+  document.querySelectorAll('.reporter-type-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function toggleChip(el) {
+  el.classList.toggle('sel');
+}
+
+function selectSev(el, cls) {
+  document.querySelectorAll('.sev-btn').forEach(b => b.classList.remove('sel-mild','sel-mod','sel-sev'));
+  el.classList.add(cls);
+}
+
+function submitScreening() {
+  // Hide all step panels
+  for(let i=1;i<=totalScreenSteps;i++){
+    const p = document.getElementById('screen-step-'+i);
+    if(p) p.classList.remove('on');
+  }
+  // Update all dots to done
+  stepDotIds.forEach(id => {
+    const el = document.getElementById(id);
+    if(el){ el.classList.add('done'); el.classList.remove('active'); el.querySelector('.screen-dot').textContent='✓'; }
+  });
+  const success = document.getElementById('screen-success');
+  if(success){ success.classList.add('on'); success.style.display='block'; }
+  showToast('Case VC-2025-4889 created — 7-day report triggered', 's');
+  window.scrollTo(0,0);
+}
+
+function resetScreening() {
+  const success = document.getElementById('screen-success');
+  if(success){ success.classList.remove('on'); success.style.display='none'; }
+  screenNext(1);
+}
+
+// ══════════════════════════════
+//  REAL-TIME COMMUNICATION
+// ══════════════════════════════
+function sendCommMsg(e) {
+  if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendCommMsgBtn(); }
+}
+
+function sendCommMsgBtn() {
+  const input = document.getElementById('commInput');
+  if(!input) return;
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  const thread = document.getElementById('commThread');
+  if(!thread) return;
+
+  // Outbound message
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}) + ' · Just now';
+  const outDiv = document.createElement('div');
+  outDiv.className = 'comm-msg out';
+  outDiv.style.animation = 'rise .3s ease';
+  outDiv.innerHTML = `
+    <div>
+      <div class="comm-sender" style="text-align:right">PV Team · VigiConnect</div>
+      <div class="comm-bubble">${text}</div>
+      <div class="comm-time" style="text-align:right">${timeStr}</div>
+    </div>
+    <div class="comm-avatar" title="PV Team">PV</div>`;
+  thread.appendChild(outDiv);
+  thread.scrollTop = thread.scrollHeight;
+
+  // Simulate reporter reply after a short delay
+  setTimeout(() => {
+    const replies = [
+      "Understood. I'll send the updated lab results shortly. The patient's ALT is improving — now 340 U/L at Day 10.",
+      "Thank you for the follow-up. I can confirm no viral hepatitis was detected. All serology was negative.",
+      "Yes, I'll complete the requested information and send it through by end of day.",
+      "Acknowledged. The patient remains stable. We can arrange a phone call if needed for further clarification.",
+      "The histopathology report has been filed with the ward — I'll attach a copy to the case for your review."
+    ];
+    const reply = replies[Math.floor(Math.random()*replies.length)];
+    const replyDiv = document.createElement('div');
+    replyDiv.className = 'comm-msg in';
+    replyDiv.style.animation = 'rise .3s ease';
+    replyDiv.innerHTML = `
+      <div class="comm-avatar" title="Reporter">Dr</div>
+      <div>
+        <div class="comm-sender">Dr. M. Patel · Hepatologist · NHS</div>
+        <div class="comm-bubble">${reply}</div>
+        <div class="comm-time">Just now</div>
+      </div>`;
+    thread.appendChild(replyDiv);
+    thread.scrollTop = thread.scrollHeight;
+    showToast('New message from Dr. M. Patel', 's');
+  }, 1800);
 }
 
 // ══════════════════════════════
